@@ -1,0 +1,26 @@
+# ─── Frontend ───
+frontend/node_modules/
+frontend/dist/
+
+# ─── Java Backend ───
+backend/target/
+backend/.mvn/
+backend/*.jar
+*.class
+
+# ─── Python ML Service ───
+ml_service/__pycache__/
+ml_service/venv/
+ml_service/*.pyc
+
+# ─── IDE / OS ───
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# ─── Environment ───
+.env
+.env.local
+.env.production
