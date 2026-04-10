@@ -26,9 +26,10 @@ public class PredictionController {
 
     @GetMapping("/predict/{ticker}")
     public Mono<Map> predict(@PathVariable String ticker) {
-        // Forward request to Python ML service and return raw JSON
+        // Clean up ticker and forward to Python ML service
+        String cleanTicker = ticker.trim().toUpperCase();
         return webClient.get()
-                .uri("/predict/{ticker}", ticker)
+                .uri("/predict/{ticker}", cleanTicker)
                 .retrieve()
                 .bodyToMono(Map.class)
                 .timeout(Duration.ofSeconds(120));  // LSTM training can take time
@@ -36,6 +37,6 @@ public class PredictionController {
 
     @GetMapping("/health")
     public Map<String, String> health() {
-        return Map.of("status", "ok", "service", "Stock Predictor Backend");
+        return Map.of("status", "ok", "service", "SensexAI Backend");
     }
 }

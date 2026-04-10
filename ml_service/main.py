@@ -1,5 +1,5 @@
 """
-Indian Stock Predictor — LSTM-powered ML Service
+SensexAI — LSTM-powered ML Service
 Provides technical analysis, trading signals, and 5-day price forecasts.
 """
 
@@ -24,7 +24,7 @@ import tensorflow as tf
 from tensorflow import keras
 from sklearn.preprocessing import MinMaxScaler
 
-app = FastAPI(title="Stock Predictor ML Service", version="2.0.0")
+app = FastAPI(title="SensexAI ML Service", version="2.0.0")
 
 # CORS
 app.add_middleware(
@@ -488,4 +488,4 @@ async def predict(ticker: str):
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "service": "Stock Predictor ML", "version": "2.0.0"}
+    return {"status": "ok", "service": "SensexAI ML", "version": "2.0.0"}

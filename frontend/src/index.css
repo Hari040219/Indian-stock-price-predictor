@@ -267,3 +267,230 @@ header h1 {
   height: 300px;
   margin-top: 1rem;
 }
+
+/* ─── Hero / Landing Section ─── */
+.hero-section {
+  margin-bottom: 2.5rem;
+}
+
+.hero-content {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+  letter-spacing: -1px;
+}
+
+.hero-highlight {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.hero-subtitle strong {
+  color: var(--text-primary);
+}
+
+/* ─── How It Works ─── */
+.how-it-works {
+  margin-top: 3rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 1.8rem;
+  }
+}
+
+.step-card {
+  position: relative;
+  background: linear-gradient(145deg, var(--bg-secondary), #1a2029);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(88, 166, 255, 0.1);
+  border-color: var(--accent-blue);
+}
+
+.step-number {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.step-card h4 {
+  color: #ffffff;
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.step-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.step-card p strong {
+  color: var(--accent-blue);
+}
+
+/* ─── Accuracy & Disclaimer ─── */
+.accuracy-section {
+  margin-top: 2.5rem;
+}
+
+.accuracy-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .accuracy-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.accuracy-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.accuracy-card:first-child {
+  border-left: 3px solid var(--accent-green);
+}
+
+.accuracy-card:last-child {
+  border-left: 3px solid var(--accent-red);
+}
+
+.accuracy-card:hover {
+  border-color: var(--accent-blue);
+}
+
+.accuracy-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.accuracy-card h4 {
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.accuracy-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.accuracy-card p strong {
+  color: var(--text-primary);
+}
+
+/* ─── Popular Tickers ─── */
+.popular-tickers {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.popular-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ticker-chip {
+  background-color: var(--bg-accent);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.ticker-chip:hover:not(:disabled) {
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  border-color: var(--accent-blue);
+  transform: translateY(-1px);
+}
+
+.ticker-chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

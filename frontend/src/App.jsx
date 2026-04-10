@@ -57,23 +57,98 @@ function App() {
   return (
     <div className="dashboard-container">
       <header>
-        <h1><span style={{color: '#fff'}}>quant</span>Trade AI</h1>
+        <h1><span style={{color: '#fff'}}>Sensex</span>AI</h1>
         <div style={{color: 'var(--text-secondary)'}}>Intraday & Swing Analysis</div>
       </header>
 
+      {/* ─── Hero / About Section ─── */}
+      {!data && !loading && (
+        <section className="hero-section">
+          <div className="hero-content">
+            <h2 className="hero-title">
+              Predict Indian Stock Prices<br />
+              <span className="hero-highlight">Using Artificial Intelligence</span>
+            </h2>
+            <p className="hero-subtitle">
+              SensexAI uses a deep learning model called <strong>LSTM</strong> (Long Short-Term Memory) 
+              to analyze stock price patterns and predict where a stock might go in the next 5 trading days. 
+              Just type any Indian stock name and get instant insights — no finance degree needed!
+            </p>
+          </div>
+
+          {/* How It Works */}
+          <div className="how-it-works">
+            <h3 className="section-title">How It Works</h3>
+            <div className="steps-grid">
+              <div className="step-card">
+                <div className="step-number">1</div>
+                <div className="step-icon">🔍</div>
+                <h4>Search a Stock</h4>
+                <p>Type any Indian stock name like <strong>RELIANCE</strong>, <strong>TCS</strong>, or <strong>INFOSYS</strong>. We automatically find it on NSE/BSE for you.</p>
+              </div>
+              <div className="step-card">
+                <div className="step-number">2</div>
+                <div className="step-icon">🧠</div>
+                <h4>AI Analyzes Data</h4>
+                <p>Our LSTM neural network studies <strong>1 year of real price data</strong>, calculates <strong>10+ technical indicators</strong> (RSI, MACD, EMAs, Bollinger Bands), and identifies trends.</p>
+              </div>
+              <div className="step-card">
+                <div className="step-number">3</div>
+                <div className="step-icon">📊</div>
+                <h4>Get Predictions</h4>
+                <p>Receive a <strong>5-day price forecast</strong>, a clear <strong>BUY / SELL / HOLD</strong> signal, confidence score, support & resistance levels, and a suggested stop-loss.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Accuracy & Disclaimer */}
+          <div className="accuracy-section">
+            <div className="accuracy-cards">
+              <div className="accuracy-card">
+                <div className="accuracy-icon">🎯</div>
+                <h4>Model Accuracy</h4>
+                <p>Our LSTM model is trained on <strong>real daily stock data</strong> and achieves a confidence score between <strong>30% to 90%</strong> depending on market volatility. The model works best for <strong>large-cap, liquid stocks</strong> with stable trading patterns.</p>
+              </div>
+              <div className="accuracy-card">
+                <div className="accuracy-icon">⚠️</div>
+                <h4>Important Disclaimer</h4>
+                <p>SensexAI is an <strong>educational tool</strong> — not financial advice. Stock markets are unpredictable. Always do your own research and consult a financial advisor before making investment decisions. <strong>Past patterns don't guarantee future results.</strong></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── Search Section ─── */}
       <div className="search-section">
-        <form onSubmit={handleSearch} className="search-bar">
-          <input
-            type="text"
-            value={ticker}
-            onChange={(e) => setTicker(e.target.value.toUpperCase())}
-            placeholder="Enter NSE/BSE ticker (e.g., RELIANCE.NS, TCS.NS)"
-            disabled={loading}
-          />
-          <button type="submit" disabled={loading || !ticker.trim()}>
-            {loading ? 'Analyzing...' : 'Analyze'}
-          </button>
-        </form>
+        <div style={{width: '100%', maxWidth: '600px'}}>
+          <form onSubmit={handleSearch} className="search-bar">
+            <input
+              type="text"
+              value={ticker}
+              onChange={(e) => setTicker(e.target.value.toUpperCase())}
+              placeholder="Enter stock name (e.g., RELIANCE, TCS, INFOSYS)"
+              disabled={loading}
+            />
+            <button type="submit" disabled={loading || !ticker.trim()}>
+              {loading ? 'Analyzing...' : 'Analyze'}
+            </button>
+          </form>
+          {/* Popular Tickers */}
+          <div className="popular-tickers">
+            <span className="popular-label">Popular:</span>
+            {['RELIANCE', 'TCS', 'INFY', 'HDFCBANK', 'SBIN', 'ITC', 'WIPRO'].map((t) => (
+              <button
+                key={t}
+                className="ticker-chip"
+                onClick={() => { setTicker(t); fetchPrediction(t); }}
+                disabled={loading}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {error && <div className="error">{error}</div>}
